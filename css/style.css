@@ -1,0 +1,65 @@
+@keyframes spinAround {
+  from {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+
+  to {
+    -webkit-transform: rotate(359deg);
+    transform: rotate(359deg);
+  }
+}
+
+.h-100 {
+  height: 100% !important;
+}
+
+.button.is-disabled {
+  background-color: #fff;
+  border-color: #dbdbdb;
+  box-shadow: none;
+  opacity: .5;
+}
+
+.button.is-danger.is-disabled {
+  background-color: #ff3860;
+  border-color: transparent;
+  box-shadow: none;
+}
+
+.button.is-primary.is-disabled {
+  background-color: #00d1b2;
+  border-color: transparent;
+  box-shadow: none;
+}
+
+.main-container {
+  padding: 60px 0;
+}
+
+.is-loading {
+  position: relative;
+  text-indent: -10000px;
+}
+
+.is-loading::after {
+  content: '';
+  display: block;
+  position: absolute;
+  top: calc(50% - (1em / 2));
+  left: calc(50% - (1em / 2));
+  width: 1em;
+  height: 1em;
+  border-radius: 290486px;
+  border: 2px solid#dbdbdb;
+  border-color: transparent transparent rgba(0, 0, 0, .7) rgba(0, 0, 0, .7) !important;
+  animation: spinAround .5s infinite linear;
+}
+
+.is-loading.is-big::after {
+  top: calc(50% - (3em / 2));
+  left: calc(50% - (3em / 2));
+  width: 3em;
+  height: 3em;
+  border-width: 4px;
+}

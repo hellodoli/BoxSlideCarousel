@@ -1,0 +1,17 @@
+<link rel="stylesheet" href="modules/slide-01/css/slide-01.css" />
+<div ng-controller="slide01" class="slide01-controller h-100">
+  <div ng-if="isLoaded == false" class="is-loading is-big">...Loading</div>
+  <div id="demoSlider" class="stt-slider stt-slider-list">
+    <div class="stt-slider-track">
+      <div
+        class="stt-slider-slide notification is-primary"
+        ng-repeat="slide in demoData.data track by $index"
+        ng-class="{'active': indexCurrent == $index }"
+        ng-style="slideItemStyle"
+        my-repeat
+      >
+        {{ slide }}
+      </div>
+    </div>
+  </div>
+</div>

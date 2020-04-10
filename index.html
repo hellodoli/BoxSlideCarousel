@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Demo BoxSlideCarousel</title>
+    <link rel="stylesheet" href="libs/bulma.min.css" />
+    <link rel="stylesheet" href="css/base.css" />
+    <link rel="stylesheet" href="libs/BoxSlideCarousel/slider.css" />
+    <link rel="stylesheet" href="css/style.css" />
+    <!-- Core JS -->
+    <script src="libs/jquery-3.3.1.min.js"></script>
+    <script src="libs/angular.min.js"></script>
+    <script src="js/app.module.js"></script>
+    <script src="libs/BoxSlideCarousel/index.js"></script>
+
+    <!-- Main JS -->
+    <script src="js/helper.js"></script>
+    <script src="js/index.js"></script>
+    <script src="modules/slide-01/controller/slide-01.js"></script>
+  </head>
+
+  <body ng-app="app">
+    <div
+      ng-controller="main-controller"
+      class="main-container container is-fluid"
+    >
+      <div class="columns">
+        <div class="column is-3">
+          <div class="form-container box">
+            <div class="notification is-secondary">
+              Please press <strong>UP, DOWN, LEFT, RIGHT</strong> after Build to
+              control slider.
+            </div>
+            <form id="formUserControls">
+              <div class="field">
+                <div class="controls">
+                  <label class="label">Slide Items</label>
+                  <input
+                    class="input"
+                    ng-model="numberItems"
+                    ng-class="{ 'is-danger': !isValidNumberItem(), 'is-primary': isValidNumberItem() }"
+                    type="text"
+                    placeholder="Nhập số lượng item..."
+                  />
+                </div>
+              </div>
+              <div class="field">
+                <div class="controls">
+                  <label class="label">Show Item</label>
+                  <input
+                    class="input"
+                    ng-model="slidesToShow"
+                    min="1"
+                    value="{{ slidesToShow }}"
+                    type="number"
+                    ng-class="{ 'is-danger': !isValidShowItem(), 'is-primary': isValidShowItem() }"
+                    placeholder="Nhập số item hiển thị..."
+                  />
+                </div>
+              </div>
+              <div ng-if="isValidShowItem()" class="field">
+                <div class="controls">
+                  <label class="label">Index show item</label>
+                  <input
+                    type="number"
+                    class="input"
+                    ng-model="$parent.indexShowDefault"
+                    min="0"
+                    value="{{ $parent.indexShowDefault }}"
+                    ng-class="{ 'is-danger': !isValidIndexShowDefault(), 'is-primary': isValidIndexShowDefault() }"
+                  />
+                </div>
+                <p class="help is-danger">
+                  {{ errorMessage.indexShowDefault }}
+                </p>
+              </div>
+              <div class="field">
+                <div class="controls">
+                  <label class="label">Speed</label>
+                  <input
+                    class="input"
+                    ng-model="speed"
+                    ng-class="{ 'is-danger': !isValidSpeed(), 'is-primary': isValidSpeed() }"
+                    type="text"
+                  />
+                </div>
+              </div>
+              <div class="field">
+                <div class="controls">
+                  <label class="label">Gap</label>
+                  <input
+                    class="input"
+                    ng-model="gap"
+                    ng-class="{ 'is-danger': !isValidGap(), 'is-primary': isValidGap() }"
+                    type="text"
+                  />
+                </div>
+              </div>
+              <div class="field">
+                <div class="controls">
+                  <label class="label">Slide type</label>
+                  <div class="select">
+                    <select ng-model="typeMoveBox">
+                      <option value="h" selected>Horizontal</option>
+                      <option value="v">Vertical</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+              <div class="field">
+                <div class="controls">
+                  <label class="checkbox">
+                    <span
+                      class="label"
+                      style="
+                        display: inline-block;
+                        margin-bottom: 0;
+                        margin-right: 1rem;
+                      "
+                      >Is Infinite ?</span
+                    >
+                    <input type="checkbox" ng-model="isInfinite" />
+                  </label>
+                </div>
+              </div>
+              <div class="field">
+                <div class="buttons">
+                  <button
+                    class="button is-danger"
+                    ng-class="{'is-disabled': !isStartBuild }"
+                    ng-click="startDestroy()"
+                  >
+                    Destroy
+                  </button>
+                  <button
+                    class="button is-primary"
+                    ng-class="{'is-disabled': !isStartBuild }"
+                    ng-click="startResetDefault()"
+                  >
+                    Reset Default
+                  </button>
+                  <button
+                    class="button is-primary"
+                    ng-class="{'is-disabled': !isReadyBuild() }"
+                    ng-click="startBuild()"
+                  >
+                    Build
+                  </button>
+                </div>
+              </div>
+            </form>
+          </div>
+          <!-- ./end .form-container -->
+        </div>
+        <div class="column is-9">
+          <div
+            ng-include="'modules/slide-01/view/slide-01.html'"
+            class="h-100"
+          ></div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

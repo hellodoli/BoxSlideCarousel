@@ -1,0 +1,30 @@
+.slide01-controller {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.slide01-controller .is-loading {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.slide01-controller .stt-slider-list {
+  margin: 0 auto;
+  /*overflow: visible !important;*/
+}
+
+.slide01-controller .stt-slider-slide {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 1.25rem 1.5rem;
+}
+
+.slide01-controller .stt-slider-slide.active {
+  background-color: hsl(348, 100%, 61%) !important;
+}
